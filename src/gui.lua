@@ -365,7 +365,9 @@ local do_research = function(player,fields,refresh)
       research = player_data.research[item:get_name()]
       if research and research.level > level_before then
         -- Unlock eureka award
-        awards.unlock(player_name,"researcher:eureka")
+        if researcher.settings.awards then
+          awards.unlock(player_name,"researcher:eureka")
+        end
 
         -- Play research level up sound
         minetest.sound_play({
